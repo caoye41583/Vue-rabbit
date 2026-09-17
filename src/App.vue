@@ -1,13 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { getCategory } from "@/apis/testAPI";
+import { reactive, ref } from "vue";
+
+let result = ref("");
+
+function test() {
+  getCategory()
+    .then((res) => {
+      console.log(res);
+      result.value = res.result;
+    })
+    .catch((err) => {
+      console.log(err);
+      result.value = err;
+    });
+}
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to
-    read the documentation
-  </p>
   <el-button type="primary">Primary</el-button>
+  <button @click="test">test</button>
+  <p>{{ result }}</p>
 </template>
 
 <style scoped></style>
