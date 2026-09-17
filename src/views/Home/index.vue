@@ -1,6 +1,6 @@
 <template>
-  <!-- 一级路由出口 -->
-  <RouterView></RouterView>
+  <div>我是home页面</div>
+  <!-- 二级路由出口 -->
 </template>
 
 <script setup lang="ts"></script>

@@ -2,6 +2,8 @@
 
 import axios from "axios";
 
+// 可以用axios.create产生不同的axios实例，每个实例对应不同的业务，
+// 如果业务请求的接口地址不同，可以创建不同的实例
 const httpInstance = axios.create({
   baseURL: "https://pcapi-xiaotuxian-front-devtest.itheima.net/",
   timeout: 5000,

@@ -1,6 +1,5 @@
 <template>
-  <!-- 一级路由出口 -->
-  <RouterView></RouterView>
+  <h1>我是登录页</h1>
 </template>
 
 <script setup lang="ts"></script>
