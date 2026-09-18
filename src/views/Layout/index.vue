@@ -1,8 +1,14 @@
 <template>
-  <h1>我是首页</h1>
+  <LayoutNav></LayoutNav>
+  <LayoutHeader></LayoutHeader>
   <RouterView></RouterView>
+  <LayoutFooter></LayoutFooter>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LayoutNav from '@/views/Layout/components/LayoutNav.vue';
+import LayoutHeader from "@/views/Layout/components/LayoutHeader.vue";
+import LayoutFooter from "@/views/Layout/components/LayoutFooter.vue";
+</script>
 
 <style scoped></style>
