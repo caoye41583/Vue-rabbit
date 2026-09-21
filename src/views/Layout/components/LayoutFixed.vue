@@ -1,5 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { useScroll } from "@vueuse/core";
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+// defineStore的state结构需要使用storeToRefs才能保证响应式，action可以直接解构
+import { useCategoryStore } from "@/stores/category";
+
+const categoryStore = useCategoryStore();
+const { categoryList } = storeToRefs(categoryStore);
 const { y } = useScroll(window);
 </script>
 
@@ -10,35 +17,8 @@ const { y } = useScroll(window);
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">居家</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">美食</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">服饰</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">母婴</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">个护</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">严选</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">数码</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">运动</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/">杂项</RouterLink>
+        <li class="home" v-for="item in categoryList" :key="item.id">
+          <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </ul>
 
