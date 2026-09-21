@@ -22,7 +22,9 @@ export interface CategoryItem {
   id: string;
   name: string;
   picture: string;
+  // children项是CategoryItem类型组成的数组，对应后端返回的children字段
   children: CategoryItem[] | null;
+  // goods项是GoodsItem类型组成的数组，对应后端返回的goods字段
   goods: GoodsItem[] | null;
 }
 
@@ -33,10 +35,25 @@ export interface ApiResult<T> {
   result: T;
 }
 
+export interface BannerItem {
+  id: string;
+  imgUrl: string;
+  hrefUrl: string;
+  type: string;
+}
+
 // 注意：响应拦截器里已 `return res.data`，resolve 出的即是数据体（ApiResult），不是 AxiosResponse
 export function getCategoryAPI() {
   return httpInstance({
     method: "GET",
     url: "/home/category/head",
   }) as unknown as Promise<ApiResult<CategoryItem[]>>;
+}
+// CategoryItem 本身不是一个数组，它是一个对象类型（单个分类项）。[] 这个后缀的意思是"由它组成的数组
+
+export function getBanner() {
+  return httpInstance({
+    method: "GET",
+    url: "/home/banner",
+  }) as unknown as Promise<ApiResult<BannerItem[]>>;
 }
