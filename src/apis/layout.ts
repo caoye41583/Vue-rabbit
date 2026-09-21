@@ -52,6 +52,13 @@ export interface NewsItem {
   orderNum: number;
 }
 
+export interface HotsItem {
+  id: string;
+  picture: string;
+  title: string;
+  alt: string;
+}
+
 // 注意：响应拦截器里已 `return res.data`，resolve 出的即是数据体（ApiResult），不是 AxiosResponse
 export function getCategoryAPI() {
   return httpInstance({
@@ -73,4 +80,11 @@ export function getNews() {
     method: "GET",
     url: "/home/new",
   }) as unknown as Promise<ApiResult<NewsItem[]>>;
+}
+
+export function getHots() {
+  return httpInstance({
+    method: "GET",
+    url: "/home/hot",
+  }) as unknown as Promise<ApiResult<HotsItem[]>>;
 }
